@@ -7,10 +7,10 @@ HTML/CSS/JavaScript — no build step, no dependencies, free to host.
 
 ```bash
 cd ~/royal-shine-portfolio
-python -m http.server 8799 --bind 127.0.0.1
+python -m http.server 8801 --bind 127.0.0.1
 ```
 
-Then open http://127.0.0.1:8799/
+Then open http://127.0.0.1:8801/
 
 ## What is in here
 
@@ -22,18 +22,33 @@ assets/
   work-lioness.jpg        screenshot of the live Lioness site
   work-blossom.jpg        screenshot of the Beauty Blossom sample
   work-cleaning.jpg       screenshot of the Royal Shine Cleaning sample
+  work-crm.png            screenshot of the client-book CRM demo dashboard
   work-blossom-mobile.jpg phone-width screenshot used in the "On phones" section
   og-image.jpg            1200x630 share card for WhatsApp link previews
   favicon.svg             gold crown favicon
 work/
   beauty-blossom-studio/  full sample site, clickable from the Work section
   royal-shine-cleaning/   full sample site, clickable from the Work section
+  lioness-crm/            working client-book CRM demo (sample data, no login)
 ```
 
-The two samples live *inside* this folder on purpose: one folder, one publish,
+The samples live *inside* this folder on purpose: one folder, one publish,
 and the "click through the sample" links keep working without extra setup.
 
-## BEFORE PUBLISHING — five things to do
+## The CRM demo
+
+`work/lioness-crm/` is a real, clickable client-book app, not a mockup: appointments
+diary (today / upcoming / past), client files with notes, allergies and history, the
+service list with prices, tasks, and a dashboard showing expected income. It runs on
+plain HTML/CSS/JS with the sample data generated relative to today, and every edit is
+stored in the visitor's own browser — no server, no login, no database.
+
+What it is **not**: a multi-user CRM with real client data. Notes and bookings saved in
+one visitor's browser are not visible to anyone else. A paid build would add logins and
+a shared (free-tier) database in the client's own name. Keep any advertising wording
+inside that line.
+
+## BEFORE PUBLISHING — six things to do
 
 1. **Add the WhatsApp number.** Open `script.js` and set `WHATSAPP_NUMBER` near the
    top. Digits only, full international format: drop the leading 0 and start with 27.
@@ -52,11 +67,18 @@ and the "click through the sample" links keep working without extra setup.
    a live site with a real client's photographs and testimonials, so it can only stay
    here if the owner agrees.
 
-4. **Decide about the CRM promise.** The flyer advertises "CRM Access". This portfolio
-   deliberately does not mention a CRM, because there is no CRM to hand over yet. Do
-   not add it back to any advertising until there is something real behind it.
+4. **Keep the CRM wording honest.** The flyer advertises "CRM Access" and the portfolio
+   now shows a working CRM demo, so there is something real behind the promise — but it
+   is a single-browser demo, not a shared multi-user system. Say "client-book CRM", show
+   the demo link, and only promise logins plus shared client data once the live version
+   with its own free database is actually built (see "The CRM demo" above).
 
-5. **Publish and then fill in the canonical address.** Nothing here is published yet.
+5. **Check the free-offer claims.** The page now promises free hosting, a free client-book
+   CRM and a free first year of the domain. That is only true while the site stays on free
+   hosting plans and you personally pay the R49 first-year domain fee — budget for it, and
+   correct the page if that ever changes.
+
+6. **Publish and then fill in the canonical address.**
 
 ## Publishing (free, GitHub Pages)
 
@@ -72,9 +94,9 @@ gh api -X POST repos/emmarentia96/royal-shine-portfolio/pages \
 ```
 
 Then the site serves at `https://emmarentia96.github.io/royal-shine-portfolio/`,
-and the two samples are at
-`https://emmarentia96.github.io/royal-shine-portfolio/work/beauty-blossom-studio/`
-and `.../work/royal-shine-cleaning/`.
+and the samples are at
+`https://emmarentia96.github.io/royal-shine-portfolio/work/lioness-crm/`,
+`.../work/beauty-blossom-studio/` and `.../work/royal-shine-cleaning/`.
 
 Once it is live, switch the relative `og:image` and `twitter:image` paths in
 `index.html` to the absolute `https://` URLs — crawlers need absolute URLs.
